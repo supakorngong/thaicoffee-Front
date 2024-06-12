@@ -3,11 +3,12 @@ import Button from "./Button";
 import useCart from "../hook/useCart";
 
 export default function Modal(props) {
-  const { open, onClose, currentProduct, item, handleAdd, handleDecrease } = props;
+  const { open, onClose, currentProduct, numberItem, handleAdd, handleDecrease } = props;
   const { createCart } = useCart();
   // console.log(currentProduct?.product_id);
+  console.log("this is number item", numberItem);
   const productId = currentProduct?.product_id;
-  console.log(item);
+
   // console.log("id", productId);
   return (
     <>
@@ -30,11 +31,11 @@ export default function Modal(props) {
                         </div>
                         <div className="p-4">
                           <button onClick={handleAdd}>+</button>
-                          {item}ชิ้น
+                          {numberItem}ชิ้น
                           <button onClick={handleDecrease}>-</button>
                         </div>
-                        <div className="p-4">ราคา: {item * currentProduct?.cost}บาท</div>
-                        <Button onClick={() => createCart({ product_id: productId, amount: item })}>add to cart</Button>
+                        <div className="p-4">ราคา: {numberItem * currentProduct?.cost}บาท</div>
+                        <Button onClick={() => createCart({ product_id: productId, amount: numberItem })}>add to cart</Button>
                       </div>
                     </div>
                   </div>

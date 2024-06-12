@@ -2,54 +2,58 @@ import { createContext } from "react";
 import CartApi from "../api/Cart";
 import { useEffect } from "react";
 import { useState } from "react";
+import { getAccessToken } from "../utils/localStorage";
+import useAuth from "../hook/useAuth";
 export const CartContext = createContext();
 
 export default function CartContextProvider({ children }) {
   const [cartItem, setCartItem] = useState(null);
-  const [numberItem, setNumberItem] = useState(null);
+  const { authUser } = useAuth();
 
-  const handleAdd = () => {
-    if (numberItem < currentProduct.stock) {
-      return setNumberItem((prev) => prev + 1);
-    }
-    setNumberItem((prev) => prev);
-  };
-
-  const handleDecrease = () => {
-    if (numberItem > 0) {
-      return setNumberItem((prev) => prev - 1);
-    }
-    setNumberItem((prev) => prev);
-    const decision = confirm("you are removing this product from cart");
-    if (decision) {
-      return setOpen(false);
-    }
-  };
+  // const [create, setCreate] = useState(null);
 
   const fetchCart = async () => {
     try {
       const result = await CartApi.getCartData();
-      console.log("this is result from getCartdata", result);
-      setCartItem(result);
-      console.log(cartItem);
+      console.log("this is result from get Cartdata", result.data);
+      setCartItem(result.data);
     } catch (err) {
       console.log(err.message);
     }
   };
+
   useEffect(() => {
-    return fetchCart();
-  }, []);
-  useEffect(() => {
-    console.log("this is cart Itemes", cartItem);
-  }, [cartItem]);
+    const token = getAccessToken();
+    console.log("this is token", token);
+    if (getAccessToken()) {
+      fetchCart();
+    }
+  }, [authUser]);
+
   const createCart = async (product) => {
     try {
       const response = await CartApi.addToCart(product);
       alert("success");
-      return response;
+      console.log(response.data);
+      fetchCart();
+      // console.log(response);
+      // setCreate(response);
+      // return response;
     } catch (err) {
       console.log(err.message);
     }
+    // console.log(create, "for what");
   };
-  return <CartContext.Provider value={{ createCart, cartItem }}>{children}</CartContext.Provider>;
+
+  const deleteCart = async (cartId) => {
+    try {
+      const response = await CartApi.deleteCartById(cartId);
+      alert("deleted form cart");
+      fetchCart();
+      return response;
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  return <CartContext.Provider value={{ createCart, cartItem, fetchCart, setCartItem, deleteCart }}>{children}</CartContext.Provider>;
 }

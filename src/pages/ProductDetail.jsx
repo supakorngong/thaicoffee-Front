@@ -12,29 +12,31 @@ export default function ProductDetail() {
   const { productName } = useParams();
   const [currentProduct, setCurrentProduct] = useState(null);
   const [open, setOpen] = useState(false);
-  const [item, setItem] = useState(null);
+  const [numberItem, setNumberItem] = useState(null);
 
   const handleClick = () => {
-    setItem(1);
+    setNumberItem(1);
     setOpen((prev) => !prev);
   };
-  // const handleAdd = () => {
-  //   if (item < currentProduct.stock) {
-  //     return setItem((prev) => prev + 1);
-  //   }
-  //   setItem((prev) => prev);
-  // };
 
-  // const handleDecrease = () => {
-  //   if (item > 0) {
-  //     return setItem((prev) => prev - 1);
-  //   }
-  //   setItem((prev) => prev);
-  //   const decision = confirm("you are removing this product from cart");
-  //   if (decision) {
-  //     return setOpen(false);
-  //   }
-  // };
+  const handleAdd = () => {
+    if (numberItem < currentProduct.stock) {
+      return setNumberItem((prev) => prev + 1);
+    }
+    setNumberItem((prev) => prev);
+  };
+
+  const handleDecrease = () => {
+    if (numberItem > 0) {
+      return setNumberItem((prev) => prev - 1);
+    }
+    setNumberItem((prev) => prev);
+    const decision = confirm("you are removing this product from cart");
+    if (decision) {
+      return setOpen(false);
+    }
+  };
+
   console.log(productName);
   useEffect(() => {
     const foundProduct = product.find((product) => product.name === productName);
@@ -63,11 +65,21 @@ export default function ProductDetail() {
         </div>
       </div>
       <div>
-        <Modal open={open} onClose={() => setOpen(false)} currentProduct={currentProduct} item={item} handleAdd={handleAdd} handleDecrease={handleDecrease} />
+        <Modal open={open} onClose={() => setOpen(false)} currentProduct={currentProduct} numberItem={numberItem} handleAdd={handleAdd} handleDecrease={handleDecrease} />
       </div>
     </div>
   );
 }
+
+/*
+กด add cart เเล้ว  
+1.set state = item --> 1
+2.show modal
+modal มี ปุ่ม + - เเล้วเอา state item มาเเสดง
+กด add to cart เเล้ว ส่ง api ไปสร้าง ตะกร้า
+*/
+
+//currentProduct,item,handleadd,decrease,open setOpen
 
 /*
 กด add cart เเล้ว  

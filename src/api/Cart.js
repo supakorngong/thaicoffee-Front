@@ -11,6 +11,10 @@ CartApi.getCartData = () => {
   return response;
 };
 
+CartApi.deleteCartById = (cartId) => {
+  return axios.delete(`/cart/${cartId}`);
+};
+
 export default CartApi;
 /*
 cart page

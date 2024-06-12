@@ -11,17 +11,17 @@ export default function AuthContextProvider({ children }) {
   //   const { children } = props;
   const [authUser, setAuthUser] = useState(null);
   const [token, setToken] = useState(getAccessToken());
-  useEffect(() => {
-    const fetch = async () => {
-      try {
-        if (getAccessToken()) {
-          const result = await authApi.getMe();
-          setAuthUser(result.data);
-        }
-      } catch (err) {
-        console.log(err.message);
+  const fetch = async () => {
+    try {
+      if (getAccessToken()) {
+        const result = await authApi.getMe();
+        setAuthUser(result.data);
       }
-    };
+    } catch (err) {
+      console.log(err.message);
+    }
+  };
+  useEffect(() => {
     fetch();
   }, [token]);
 
@@ -41,5 +41,5 @@ export default function AuthContextProvider({ children }) {
     setAuthUser(null);
     setToken(null);
   };
-  return <AuthContext.Provider value={{ authUser, login, logout }}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{ authUser, login, logout, token }}>{children}</AuthContext.Provider>;
 }

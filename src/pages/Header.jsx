@@ -5,14 +5,14 @@ import useAuth from "../hook/useAuth";
 export default function Header() {
   const { authUser, logout } = useAuth();
   return (
-    <div className="navbar bg-yellow-500 px-40">
+    <div className="navbar bg-[#5d4133] px-40">
       <div className="flex-1">
         <div className="flex items-center gap-3">
           {authUser && (
             <Link to="/profile">
               <div className="btn btn-ghost btn-circle avatar flex w-60">
                 <ProfileIcon role="button" />
-                <h1 className="text-black">
+                <h1 className="text-white">
                   welcome back {authUser?.user.firstName} {authUser.user.lastName} !!!
                 </h1>
               </div>
@@ -20,20 +20,24 @@ export default function Header() {
           )}
 
           <div>
-            <button className="text-black">
+            <button className="text-white">
               {authUser ? (
-                <Link to="/" onClick={logout}>
+                <Link to="/" onClick={logout} className="hover:bg-custom-yellow hover:rounded-md hover:p-2">
                   logout
                 </Link>
               ) : (
-                <Link to="/login">login</Link>
+                <Link to="/login" className="hover:bg-custom-yellow hover:rounded-md hover:p-2">
+                  login
+                </Link>
               )}
             </button>
           </div>
           <div>
             {!authUser && (
-              <button className="text-black">
-                <Link to="/register">register</Link>
+              <button className="text-white">
+                <Link to="/register" className="hover:bg-custom-yellow hover:rounded-md hover:p-2">
+                  register
+                </Link>
               </button>
             )}
           </div>
@@ -49,7 +53,9 @@ export default function Header() {
         </div>
         <div className="btn btn-ghost btn-circle avatar">
           <div>
-            <HistoryIcon />
+            <Link to="/orderhistory">
+              <HistoryIcon />
+            </Link>
           </div>
         </div>
       </div>

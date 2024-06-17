@@ -4,6 +4,7 @@ import { deleteAccessToken, getAccessToken } from "../utils/localStorage";
 import { giveAccessToken } from "../utils/localStorage";
 import authApi from "../api/Auth";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
 
 export const AuthContext = createContext();
 
@@ -25,21 +26,23 @@ export default function AuthContextProvider({ children }) {
     fetch();
   }, [token]);
 
-  useEffect(() => {
-    console.log("this is AuthUser", authUser);
-  }, [authUser]);
+  // useEffect(() => {
+  //   console.log("this is AuthUser", authUser);
+  // }, [authUser]);
 
   const login = async (body) => {
     const result = await authApi.login(body);
     const token = result.data.accessToken;
     giveAccessToken(token);
     setToken(token);
+    toast.success("login success");
     return result;
   };
   const logout = () => {
     deleteAccessToken();
     setAuthUser(null);
     setToken(null);
+    toast.success("logout success");
   };
-  return <AuthContext.Provider value={{ authUser, login, logout, token }}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{ authUser, login, logout, token, setAuthUser, fetch }}>{children}</AuthContext.Provider>;
 }

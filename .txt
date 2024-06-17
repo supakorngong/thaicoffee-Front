@@ -28,3 +28,11 @@ submit order
 
 
 
+
+login ก่อน ต้องมี token ถึงเเสดงตะกร้า ซึ่งดึงตะกร้า ตาม token ของ user คนนั้นๆ
+
+
+ใช้ fileEl.current เพื่อคลิก input
+
+
+

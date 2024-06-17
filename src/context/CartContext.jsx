@@ -4,11 +4,13 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { getAccessToken } from "../utils/localStorage";
 import useAuth from "../hook/useAuth";
+
 export const CartContext = createContext();
 
 export default function CartContextProvider({ children }) {
   const [cartItem, setCartItem] = useState(null);
   const { authUser } = useAuth();
+  const [component, setComponent] = useState(false);
 
   // const [create, setCreate] = useState(null);
 
@@ -24,8 +26,8 @@ export default function CartContextProvider({ children }) {
 
   useEffect(() => {
     const token = getAccessToken();
-    console.log("this is token", token);
-    if (getAccessToken()) {
+    // console.log("this is token", token);
+    if (token) {
       fetchCart();
     }
   }, [authUser]);
@@ -36,6 +38,7 @@ export default function CartContextProvider({ children }) {
       alert("success");
       console.log(response.data);
       fetchCart();
+
       // console.log(response);
       // setCreate(response);
       // return response;
@@ -55,5 +58,5 @@ export default function CartContextProvider({ children }) {
       console.log(err);
     }
   };
-  return <CartContext.Provider value={{ createCart, cartItem, fetchCart, setCartItem, deleteCart }}>{children}</CartContext.Provider>;
+  return <CartContext.Provider value={{ createCart, cartItem, fetchCart, setCartItem, deleteCart, component, setComponent }}>{children}</CartContext.Provider>;
 }

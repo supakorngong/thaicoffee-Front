@@ -1,12 +1,19 @@
 import { Link } from "react-router-dom";
 import Dropdown from "../layout/Dropdown";
+import useProduct from "../hook/useProduct";
 
 export default function Section() {
   return (
     <div>
-      <div className="text-5xl">Thai Seed Coffee</div>
-      <div className="flex w-full justify-center pb-10">
-        <Link to="/">home</Link>
+      <div className="flex flex-col text-5xl py-6 items-center justify-center text-[#1a120f]">
+        <div>Thai</div>
+        <div>SeedCoffee</div>
+      </div>
+      <div className="flex w-full justify-center pb-10 text-black ">
+        <Link to="/" className="px-3 hover:border-2 border-b-black">
+          home
+        </Link>
+
         <Dropdown />
         {/* <Link to="/product">product</Link> */}
       </div>

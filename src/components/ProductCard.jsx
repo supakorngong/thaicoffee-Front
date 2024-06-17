@@ -5,9 +5,9 @@ export default function ProductCard(props) {
 
   return (
     <Link to={`/product/${Pname}`}>
-      <div className="w-[200px] h-[500px] border-2 border-black flex-col overflow-clip">
+      <div className="w-[200px] h-[500px] p-4 rounded-md bg-white flex-col  overflow-clip hover:border-none hover:shadow-2xl hover:scale-110 hover:bg-[#5d4133]">
         <div className="h-[250px]">
-          <img src={src} className="h-full w-full object-cover"></img>
+          <img src={src} className="h-full w-full object-cover rounded-b-lg"></img>
         </div>
         <div>
           <div>{Pname}</div>

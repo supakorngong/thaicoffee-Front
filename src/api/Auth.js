@@ -1,5 +1,5 @@
 import axios from "../config/axios";
-import { getAccessToken } from "../utils/localStorage";
+// import { getAccessToken } from "../utils/localStorage";
 
 const authApi = {};
 
@@ -12,6 +12,12 @@ authApi.login = async (body) => {
   console.log("i am body", body);
   const result = await axios.post("/auth/login", body);
   console.log("i am result", result);
+  return result;
+};
+authApi.updateAddress = async (body) => {
+  console.log("i am body", body);
+  const result = await axios.patch("/auth/edit", body);
+  console.log("i am result of update", result);
   return result;
 };
 authApi.getMe = async () => await axios.get("/auth/me");

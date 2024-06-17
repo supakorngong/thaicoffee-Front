@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import Button from "../components/Button";
 
 import Modal from "../components/Modal";
-import useCart from "../hook/useCart";
 
 export default function ProductDetail() {
   const { product } = useProduct();
@@ -37,7 +36,7 @@ export default function ProductDetail() {
     }
   };
 
-  console.log(productName);
+  // console.log(productName);
   useEffect(() => {
     const foundProduct = product.find((product) => product.name === productName);
     console.log("i am foundProduct", foundProduct);

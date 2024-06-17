@@ -4,6 +4,7 @@ import validateLogin from "../../../validator/LoginValidator";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hook/useAuth";
+import { toast } from "react-toastify";
 
 // import authApi from "../../../api/Auth";
 // import { giveAccessToken } from "../../../utils/localStorage";
@@ -42,7 +43,7 @@ export default function LoginForm() {
 
       navigate("/");
     } catch (err) {
-      console.log("gong");
+      toast.error(err.message);
       console.dir(err);
     }
   };
@@ -54,7 +55,7 @@ export default function LoginForm() {
 
         <Input type="text" placeholder="enter your password" name="password" value={input.password} onChange={handleChange} error={inputError.password} />
 
-        <Button display="block mx-auto" width="20">
+        <Button display="block mx-auto mt-4" width="20">
           login
         </Button>
       </div>

@@ -1,10 +1,14 @@
 import { createPortal } from "react-dom";
 import Button from "./Button";
 import useCart from "../hook/useCart";
+import { useNavigate } from "react-router-dom";
+import useAuth from "../hook/useAuth";
 
 export default function Modal(props) {
   const { open, onClose, currentProduct, numberItem, handleAdd, handleDecrease } = props;
   const { createCart } = useCart();
+  const navigate = useNavigate();
+  const { authUser } = useAuth();
   // console.log(currentProduct?.product_id);
   console.log("this is number item", numberItem);
   const productId = currentProduct?.product_id;
@@ -35,7 +39,18 @@ export default function Modal(props) {
                           <button onClick={handleDecrease}>-</button>
                         </div>
                         <div className="p-4">ราคา: {numberItem * currentProduct?.cost}บาท</div>
-                        <Button onClick={() => createCart({ product_id: productId, amount: numberItem })}>add to cart</Button>
+                        {authUser ? (
+                          <Button
+                            onClick={() => {
+                              createCart({ product_id: productId, amount: numberItem });
+                              navigate("/cart");
+                            }}
+                          >
+                            add to cart
+                          </Button>
+                        ) : (
+                          <Button onClick={() => alert("please login")}>add to cart</Button>
+                        )}
                       </div>
                     </div>
                   </div>

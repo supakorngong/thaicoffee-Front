@@ -1,6 +1,7 @@
 import { LoaderIcon } from "../icons";
 
 export default function Spinner({ transparent }) {
+  console.log("spinner working");
   return (
     <>
       {/* backdrop */}

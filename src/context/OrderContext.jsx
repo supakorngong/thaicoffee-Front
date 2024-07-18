@@ -28,7 +28,8 @@ export default function OrderContextProvider({ children }) {
     try {
       const orderDetails = await OrderApi.getOrderByUserId();
       // console.log("i am ironman", orderDetails);
-      setOrderDetail(orderDetails.data);
+      const sortedOrder = orderDetails.data.sort((a, b) => b.order_id - a.order_id);
+      setOrderDetail(sortedOrder);
     } catch (err) {
       console.log(err.message);
     }

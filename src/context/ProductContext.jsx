@@ -34,5 +34,5 @@ export default function ProductContextProvider({ children }) {
   //   console.log("this is show", show);
   // }, [show]);
 
-  return <ProductContext.Provider value={{ product, productFiltered, show, isLoading }}>{children}</ProductContext.Provider>;
+  return <ProductContext.Provider value={{ product, productFiltered, show, isLoading, setIsLoading }}>{children}</ProductContext.Provider>;
 }

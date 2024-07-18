@@ -1,10 +1,16 @@
+import { useEffect } from "react";
 import OrderApi from "../../../api/Order";
 import Button from "../../../components/Button";
 import useAuth from "../../../hook/useAuth";
 import useOrder from "../../../hook/useOrder";
+import useCart from "../../../hook/useCart";
 
 export default function OrderTable({ el, index }) {
   const { fetchOrder } = useOrder();
+  const { order } = useCart();
+  useEffect(() => {
+    fetchOrder();
+  }, [order]);
 
   const handleClick = async (orderId, statuss) => {
     try {

@@ -8,13 +8,14 @@ import { useEffect } from "react";
 import OrderApi from "../../../api/Order";
 import ProductApi from "../../../api/Product";
 import { toast } from "react-toastify";
+import Spinner from "../../../components/Spinner";
 
 export default function FinalForm() {
   const fileEl = useRef();
 
-  const [file, setFile] = useState(null);
+  // const [file, setFile] = useState(null);
 
-  const { cartItem, setCartItem, setComponent } = useCart();
+  const { cartItem, setCartItem, setComponent, cost, file, setFile, handleClickPay, isLoading } = useCart();
 
   const { authUser, fetch } = useAuth();
 
@@ -24,15 +25,15 @@ export default function FinalForm() {
 
   const [input, setInput] = useState(initialInput);
 
-  const [cost, setCost] = useState(0);
-  const [loading, setLoading] = useState(false);
+  // const [cost, setCost] = useState(0);
+  // const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const calculation = cartItem?.reduce((acc, cur) => {
-      return (acc += cur.product.cost * cur.amount);
-    }, 0);
-    setCost(calculation);
-  }, [cartItem]);
+  // useEffect(() => {
+  //   const calculation = cartItem?.reduce((acc, cur) => {
+  //     return (acc += cur.product.cost * cur.amount);
+  //   }, 0);
+  //   setCost(calculation);
+  // }, [cartItem]);
 
   const handleEditAddress = () => {
     setEdit((prev) => !prev);
@@ -51,30 +52,32 @@ export default function FinalForm() {
     }
   };
 
-  const handleClickPay = async () => {
-    try {
-      const formData = new FormData();
-      if (cost) {
-        formData.append("totalCost", cost);
-      }
-      if (file) {
-        formData.append("evidence", file);
-      }
-      setLoading(true);
-      console.log(loading);
-      // console.log(formData, "this is how form data looks like");
-      await OrderApi.createOrder(formData);
-      await ProductApi.updateStock(cartItem); //ควรสร้างเป้นเส้นเดียว
-      setCartItem([]);
-      setComponent(false);
-      toast.success("payed order successfully");
-    } catch (err) {
-      toast.error("Failed to pay for the order.");
-      console.log(err);
-    } finally {
-      setLoading(false);
-    }
-  };
+  console.log(isLoading);
+
+  // const handleClickPay = async () => {
+  //   try {
+  //     const formData = new FormData();
+  //     if (cost) {
+  //       formData.append("totalCost", cost);
+  //     }
+  //     if (file) {
+  //       formData.append("evidence", file);
+  //     }
+  //     setLoading(true);
+  //     console.log(loading);
+  //     // console.log(formData, "this is how form data looks like");
+  //     await OrderApi.createOrder(formData);
+  //     await ProductApi.updateStock(cartItem); //ควรสร้างเป้นเส้นเดียว
+  //     setCartItem([]);
+  //     setComponent(false);
+  //     toast.success("payed order successfully");
+  //   } catch (err) {
+  //     toast.error("Failed to pay for the order.");
+  //     console.log(err);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
 
   // console.log("this is check edit", input);
   // console.log("this is address", authUser?.user.address);
@@ -82,6 +85,7 @@ export default function FinalForm() {
 
   return (
     <>
+      {/* {isLoading && <Spinner />} */}
       <div className="w-full flex justify-center text-2xl text-black ">
         <h1>cart</h1>
       </div>

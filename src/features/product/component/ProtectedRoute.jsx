@@ -7,7 +7,7 @@ export default function ProtectedRoute({ children }) {
 
   return (
     <>
-      {isLoading && Spinner}
+      {isLoading && <Spinner />}
       {children}
     </>
   );

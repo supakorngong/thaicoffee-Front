@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import Dropdown from "../layout/Dropdown";
-import useProduct from "../hook/useProduct";
 
 export default function Section() {
   return (
@@ -15,7 +14,6 @@ export default function Section() {
         </Link>
 
         <Dropdown />
-        {/* <Link to="/product">product</Link> */}
       </div>
     </div>
   );

@@ -1,13 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import { RouterProvider } from "react-router-dom";
-// import MainContainer from "../pages/MainContainer";
-// import HomePage from "../pages/HomePage";
-// import LoginPage from "../pages/LoginPage";
-// import RegisterPage from "../pages/RegisterPage";
-// import ProductPage from "../pages/productPage";
-// import ProfilePage from "../pages/ProfilePage";
-// import ProductDetail from "../pages/ProductDetail";
-// import Cart from "../pages/Cart";
 import { lazy } from "react";
 import Order from "../pages/Order";
 import ProtectedRoute from "../features/product/component/ProtectedRoute";

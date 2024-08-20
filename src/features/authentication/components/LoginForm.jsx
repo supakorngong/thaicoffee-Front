@@ -6,8 +6,6 @@ import { useNavigate } from "react-router-dom";
 import useAuth from "../../../hook/useAuth";
 import { toast } from "react-toastify";
 
-// import authApi from "../../../api/Auth";
-// import { giveAccessToken } from "../../../utils/localStorage";
 export default function LoginForm() {
   const { login } = useAuth();
   const initialInput = {
@@ -23,7 +21,6 @@ export default function LoginForm() {
   const navigate = useNavigate();
 
   const handleChange = (e) => {
-    console.log(e.target);
     setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
@@ -35,16 +32,10 @@ export default function LoginForm() {
         return setInputError(error);
       }
       setInputError({ ...initialInput });
-      const result = await login(input);
-      console.log("result of axios", result);
-      //   const result = await authApi.login(input);
-      //   const token = result.data.accessToken;
-      //   giveAccessToken(token);
-
+      await login(input);
       navigate("/");
     } catch (err) {
       toast.error(err.message);
-      console.dir(err);
     }
   };
 

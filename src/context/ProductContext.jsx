@@ -10,7 +10,6 @@ export default function ProductContextProvider({ children }) {
 
   const productFiltered = (regions) => {
     const clonedProduct = [...product];
-    // console.log("this is cloneee", product);
     setShow(clonedProduct.filter((el) => el.region === regions));
   };
 
@@ -29,10 +28,6 @@ export default function ProductContextProvider({ children }) {
   useEffect(() => {
     fetchProducts();
   }, []);
-
-  // useEffect(() => {
-  //   console.log("this is show", show);
-  // }, [show]);
 
   return <ProductContext.Provider value={{ product, productFiltered, show, isLoading, setIsLoading }}>{children}</ProductContext.Provider>;
 }

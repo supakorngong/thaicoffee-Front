@@ -8,14 +8,12 @@ export default function CartForm() {
 
   const handleIncrease = (index) => {
     const newItem = [...cartItem];
-    console.log(newItem);
 
     if (newItem[index].amount === newItem[index].product.stock) {
       return;
     }
 
     newItem[index].amount += 1;
-    // console.log(cartItem[index], "CHECK CART");
     setCartItem(newItem);
   };
 
@@ -26,10 +24,7 @@ export default function CartForm() {
     }
     newItem[index].amount -= 1;
     setCartItem(newItem);
-    // console.log(cartItem[index], "CHECK CART");
   };
-
-  // console.log(cartItem, "cart item!!!!!");
 
   return (
     <>

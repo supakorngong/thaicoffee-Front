@@ -9,7 +9,6 @@ import { toast } from "react-toastify";
 export const AuthContext = createContext();
 
 export default function AuthContextProvider({ children }) {
-  //   const { children } = props;
   const [authUser, setAuthUser] = useState(null);
   const [token, setToken] = useState(getAccessToken());
   const fetch = async () => {
@@ -19,16 +18,12 @@ export default function AuthContextProvider({ children }) {
         setAuthUser(result.data);
       }
     } catch (err) {
-      console.log(err.message);
+      toast.error(err.message);
     }
   };
   useEffect(() => {
     fetch();
   }, [token]);
-
-  // useEffect(() => {
-  //   console.log("this is AuthUser", authUser);
-  // }, [authUser]);
 
   const login = async (body) => {
     const result = await authApi.login(body);

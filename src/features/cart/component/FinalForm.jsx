@@ -4,18 +4,13 @@ import useAuth from "../../../hook/useAuth";
 import { useState } from "react";
 import authApi from "../../../api/Auth";
 import { useRef } from "react";
-import { useEffect } from "react";
-import OrderApi from "../../../api/Order";
-import ProductApi from "../../../api/Product";
+import paymentApi from "../../../api/Payment";
 import { toast } from "react-toastify";
-import Spinner from "../../../components/Spinner";
 
 export default function FinalForm() {
   const fileEl = useRef();
 
-  // const [file, setFile] = useState(null);
-
-  const { cartItem, setCartItem, setComponent, cost, file, setFile, handleClickPay, isLoading } = useCart();
+  const { cartItem, setComponent, cost, file, setFile, handleClickPay, isLoading } = useCart();
 
   const { authUser, fetch } = useAuth();
 
@@ -25,67 +20,31 @@ export default function FinalForm() {
 
   const [input, setInput] = useState(initialInput);
 
-  // const [cost, setCost] = useState(0);
-  // const [loading, setLoading] = useState(false);
-
-  // useEffect(() => {
-  //   const calculation = cartItem?.reduce((acc, cur) => {
-  //     return (acc += cur.product.cost * cur.amount);
-  //   }, 0);
-  //   setCost(calculation);
-  // }, [cartItem]);
-
   const handleEditAddress = () => {
     setEdit((prev) => !prev);
   };
 
   const handleSaveAddress = async (input) => {
-    console.log("hereererere", input);
     try {
-      const test = await authApi.updateAddress(input);
-      console.log("test", test.data);
+      await authApi.updateAddress(input);
       fetch();
 
       handleEditAddress();
     } catch (err) {
-      console.log(err.message);
+      toast.err(err.message);
+    }
+  };
+  const handlePaycard = async () => {
+    try {
+      const result = await paymentApi.checkout(cartItem, cost);
+      window.location = result.data.url;
+    } catch (error) {
+      toast.err(error.message);
     }
   };
 
-  console.log(isLoading);
-
-  // const handleClickPay = async () => {
-  //   try {
-  //     const formData = new FormData();
-  //     if (cost) {
-  //       formData.append("totalCost", cost);
-  //     }
-  //     if (file) {
-  //       formData.append("evidence", file);
-  //     }
-  //     setLoading(true);
-  //     console.log(loading);
-  //     // console.log(formData, "this is how form data looks like");
-  //     await OrderApi.createOrder(formData);
-  //     await ProductApi.updateStock(cartItem); //ควรสร้างเป้นเส้นเดียว
-  //     setCartItem([]);
-  //     setComponent(false);
-  //     toast.success("payed order successfully");
-  //   } catch (err) {
-  //     toast.error("Failed to pay for the order.");
-  //     console.log(err);
-  //   } finally {
-  //     setLoading(false);
-  //   }
-  // };
-
-  // console.log("this is check edit", input);
-  // console.log("this is address", authUser?.user.address);
-  // console.log(cartItem, "cart item!!!!!");
-
   return (
     <>
-      {/* {isLoading && <Spinner />} */}
       <div className="w-full flex justify-center text-2xl text-black ">
         <h1>cart</h1>
       </div>
@@ -94,22 +53,20 @@ export default function FinalForm() {
           <div>
             {cartItem?.map((el) => {
               return (
-                <>
-                  <div className="flex  items-center gap-5 w-full p-4 text-black">
-                    <div className="w-[200px] h-21  ">
-                      <img src={el.product.picture} alt="" className="object-fill h-full w-full" />
-                    </div>
-                    <div className="m-4 w-24">
-                      <p>{el.product.name}</p>
-                    </div>
-                    <div className="flex gap-2 h-3/6 m-4">
-                      <p>{el.amount}</p>
-                    </div>
-                    <div className="m-4">
-                      <p>{el.product.cost * el.amount}บาท</p>
-                    </div>
+                <div className="flex  items-center gap-5 w-full p-4 text-black" key={el.product.name}>
+                  <div className="w-[200px] h-21  ">
+                    <img src={el.product.picture} alt="" className="object-fill h-full w-full" />
                   </div>
-                </>
+                  <div className="m-4 w-24">
+                    <p>{el.product.name}</p>
+                  </div>
+                  <div className="flex gap-2 h-3/6 m-4">
+                    <p>{el.amount}</p>
+                  </div>
+                  <div className="m-4">
+                    <p>{el.product.cost * el.amount}บาท</p>
+                  </div>
+                </div>
               );
             })}
           </div>
@@ -173,6 +130,7 @@ export default function FinalForm() {
               ) : (
                 <Button disabled>payment</Button>
               )}
+              <Button onClick={handlePaycard}>pay by card</Button>
               <Button bg="red" onClick={() => setComponent((prev) => !prev)}>
                 edit cart
               </Button>

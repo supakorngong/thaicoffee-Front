@@ -9,20 +9,18 @@ import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
-    <>
-      <Suspense fallback={<Spinner />}>
-        <AuthContextProvider>
-          <ProductContextProvider>
-            <CartContextProvider>
-              <OrderContextProvider>
-                <Router />
-                <ToastContainer position="bottom-right" autoClose={3000} />
-              </OrderContextProvider>
-            </CartContextProvider>
-          </ProductContextProvider>
-        </AuthContextProvider>
-      </Suspense>
-    </>
+    <Suspense fallback={<Spinner />}>
+      <AuthContextProvider>
+        <ProductContextProvider>
+          <CartContextProvider>
+            <OrderContextProvider>
+              <Router />
+              <ToastContainer position="bottom-right" autoClose={3000} />
+            </OrderContextProvider>
+          </CartContextProvider>
+        </ProductContextProvider>
+      </AuthContextProvider>
+    </Suspense>
   );
 }
 

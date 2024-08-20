@@ -69,21 +69,3 @@ export default function ProductDetail() {
     </div>
   );
 }
-
-/*
-กด add cart เเล้ว  
-1.set state = item --> 1
-2.show modal
-modal มี ปุ่ม + - เเล้วเอา state item มาเเสดง
-กด add to cart เเล้ว ส่ง api ไปสร้าง ตะกร้า
-*/
-
-//currentProduct,item,handleadd,decrease,open setOpen
-
-/*
-กด add cart เเล้ว  
-1.set state = item --> 1
-2.show modal
-modal มี ปุ่ม + - เเล้วเอา state item มาเเสดง
-กด add to cart เเล้ว ส่ง api ไปสร้าง ตะกร้า
-*/

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getAccessToken } from "../utils/localStorage";
 axios.defaults.baseURL = import.meta.env.VITE_API_URL;
-// console.log(axios.defaults.baseURL);
+
 axios.interceptors.request.use((config) => {
   const accessToken = getAccessToken();
 

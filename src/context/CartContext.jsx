@@ -15,7 +15,7 @@ export const CartContext = createContext();
 export default function CartContextProvider({ children }) {
   const [cartItem, setCartItem] = useState(null);
   const { authUser } = useAuth();
-  const { isLoading, setIsLoading } = useProduct();
+  const { isLoading, setIsLoading, fetchProducts } = useProduct();
   const [component, setComponent] = useState(false);
   const [cost, setCost] = useState(0);
   const [file, setFile] = useState(null);
@@ -39,11 +39,10 @@ export default function CartContextProvider({ children }) {
       }
       setIsLoading(true);
       <Navigate to="/cart" />;
-      console.log(isLoading);
 
       await OrderApi.createOrder(formData);
-      await ProductApi.updateStock(cartItem); //ควรสร้างเป้นเส้นเดียว
-
+      await ProductApi.updateStock(cartItem);
+      await fetchProducts();
       setCartItem([]);
       setComponent(false);
       setOrder((prev) => !prev);
@@ -77,7 +76,7 @@ export default function CartContextProvider({ children }) {
   const createCart = async (product) => {
     try {
       const response = await CartApi.addToCart(product);
-      alert("success");
+      toast.success("Add Success");
       fetchCart();
     } catch (err) {
       toast.error(err.message);

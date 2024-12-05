@@ -3,6 +3,7 @@ import Button from "./Button";
 import useCart from "../hook/useCart";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../hook/useAuth";
+import { toast } from "react-toastify";
 
 export default function Modal(props) {
   const { open, onClose, currentProduct, numberItem, handleAdd, handleDecrease } = props;
@@ -10,7 +11,6 @@ export default function Modal(props) {
   const navigate = useNavigate();
   const { authUser } = useAuth();
 
-  console.log("this is number item", numberItem);
   const productId = currentProduct?.product_id;
 
   return (
@@ -47,7 +47,7 @@ export default function Modal(props) {
                           add to cart
                         </Button>
                       ) : (
-                        <Button onClick={() => alert("please login")}>add to cart</Button>
+                        <Button onClick={() => toast.error("Please Login")}>add to cart</Button>
                       )}
                     </div>
                   </div>

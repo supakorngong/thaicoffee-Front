@@ -1,21 +1,43 @@
+import Swal from "sweetalert2";
 import useAuth from "../hook/useAuth";
 import { useNavigate } from "react-router-dom";
 
 export default function HomePage() {
   const { authUser } = useAuth();
   const navigate = useNavigate();
+
   const suggestUser = () => {
     if (!authUser) {
-      const response = confirm("do you want to explore our shop without account?");
-      if (!response) {
-        const result = confirm("do you have any account");
-        if (result) {
-          return navigate("/login");
+      Swal.fire({
+        title: "do you want to explore our shop without account?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "yes",
+        denyButtonText: `no`,
+        confirmButtonColor: "#41DC41",
+      }).then((result) => {
+        /* Read more about isConfirmed, isDenied below */
+        if (result.isConfirmed) {
+          navigate("/product");
+        } else if (result.isDenied) {
+          Swal.fire({
+            title: "do you have any account?",
+            showDenyButton: true,
+            confirmButtonText: "yes",
+            denyButtonText: `no`,
+          }).then((result) => {
+            /* Read more about isConfirmed, isDenied below */
+            if (result.isConfirmed) {
+              navigate("/login");
+            } else if (result.isDenied) {
+              navigate("/register");
+            }
+          });
         }
-        return navigate("/register");
-      }
+      });
+    } else {
+      navigate("/product");
     }
-    navigate("/product");
   };
   return (
     <div className="hero min-h-screen" style={{ backgroundImage: "url(https://www.aromathailand.com/wp-content/uploads/2023/10/shutterstock_326070713.jpeg" }}>

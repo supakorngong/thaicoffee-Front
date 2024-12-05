@@ -43,7 +43,7 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <div className="flex-none">
+      <div className="flex-none gap-2">
         <div className="btn btn-ghost btn-circle">
           <div className="indicator">
             <Link to="/cart">

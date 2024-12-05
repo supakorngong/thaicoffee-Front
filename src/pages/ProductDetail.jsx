@@ -39,7 +39,6 @@ export default function ProductDetail() {
   // console.log(productName);
   useEffect(() => {
     const foundProduct = product.find((product) => product.name === productName);
-    console.log("i am foundProduct", foundProduct);
 
     if (foundProduct) {
       setCurrentProduct(foundProduct);
@@ -47,16 +46,16 @@ export default function ProductDetail() {
   }, [product, productName]);
 
   return (
-    <div className="flex gap-20">
-      <div>
+    <div className="flex gap-10 justify-evenly">
+      <div className="mx-15">
         <img src={currentProduct?.picture}></img>
       </div>
-      <div>
-        <h1 className="text-2xl mb-2">{currentProduct?.name}</h1>
+      <div className="w-[400px] flex flex-col justify-center h-[450px] border-2 border-[#f4f4f5] overflow-hidden shadow-[#ffffff] rounded-lg shadow-sm">
+        <h1 className="text-2xl mb-2 overflow-hidden">{currentProduct?.name}</h1>
         <h2 className="text-lg mb-1">
           เเหล่งที่ปลูก : {currentProduct?.province} &nbsp; ภูมิภาค:{currentProduct?.region}
         </h2>
-        <p>{currentProduct?.description}</p>
+        <p className="overflow-hidden whitespace-nowrap text-ellipsis rounded">{currentProduct?.description}</p>
         <p>ราคา : {currentProduct?.cost} บาท</p>
         <p>มีจํานวน : {currentProduct?.stock} ชิ้น</p>
         <div>

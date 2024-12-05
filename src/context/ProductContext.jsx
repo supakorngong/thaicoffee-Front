@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect } from "react";
 import ProductApi from "../api/Product";
+import { toast } from "react-toastify";
 
 export const ProductContext = createContext();
 
@@ -19,6 +20,7 @@ export default function ProductContextProvider({ children }) {
       const response = await ProductApi.getAllProduct();
       setProduct(response.data);
     } catch (err) {
+      toast.error("fetch product failed");
       console.log("fetch product err", err.message);
     } finally {
       setIsLoading(false);
@@ -29,5 +31,5 @@ export default function ProductContextProvider({ children }) {
     fetchProducts();
   }, []);
 
-  return <ProductContext.Provider value={{ product, productFiltered, show, isLoading, setIsLoading }}>{children}</ProductContext.Provider>;
+  return <ProductContext.Provider value={{ product, productFiltered, show, isLoading, setIsLoading, fetchProducts }}>{children}</ProductContext.Provider>;
 }

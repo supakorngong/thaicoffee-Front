@@ -10,8 +10,8 @@ export default function Section() {
           <div>SeedCoffee</div>
         </div>
       </Link>
-      <div className="flex w-full justify-center pb-10 text-black ">
-        <Link to="/" className="px-3 hover:border-2 border-b-black">
+      <div className="flex w-full justify-center pb-10 text-black md:text-[20px] lg:text-[22px]">
+        <Link to="/" className="px-3 hover:border-2 border-b-black ">
           home
         </Link>
 

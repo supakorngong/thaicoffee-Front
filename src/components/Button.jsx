@@ -18,7 +18,7 @@ const disabledClasses = "bg-gray-400 cursor-not-allowed opacity-50";
 export default function Button(props) {
   const { children, bg = "blue", color = "white", width, onClick, display, disabled } = props;
   return (
-    <button className={`${display} px-3 py-1.5  rounded ${bgMap[bg]} ${colorMap[color]} ${widthMap[width]} ${disabled ? disabledClasses : enabledClasses}`} onClick={onClick} disabled={disabled}>
+    <button className={`${display} px-3 py-1.5 my-2  rounded ${bgMap[bg]} ${colorMap[color]} ${widthMap[width]} ${disabled ? disabledClasses : enabledClasses}`} onClick={onClick} disabled={disabled}>
       {children}
     </button>
   );

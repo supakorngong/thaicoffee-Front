@@ -46,9 +46,9 @@ export default function HomePage() {
     <div className="hero min-h-screen" style={{ backgroundImage: "url(https://www.aromathailand.com/wp-content/uploads/2023/10/shutterstock_326070713.jpeg" }}>
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="hero-content text-center text-neutral-content">
-        <div className="max-w-md">
-          <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-          <p className="mb-5">
+        <div className="max-w-md lg:max-w-lg">
+          <h1 className="mb-5 text-5xl font-bold lg:text-[50px] lg:mb-6">Welcome</h1>
+          <p className="mb-5 max-w-[300px] md:max-w-[450px] lg:max-w-[1200px] lg:text-[20px] lg:mb-8">
             We prioritize the quality of coffee beans from the best sources to ensure you experience the freshest and most intense flavors. The coffee beans we select are of the highest quality,
             carefully chosen from renowned coffee farms in Thailand, so every cup of coffee you enjoy is filled with happiness and a unique experience.
           </p>

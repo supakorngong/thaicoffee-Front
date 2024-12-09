@@ -5,7 +5,7 @@ import useAuth from "../hook/useAuth";
 export default function Header() {
   const { authUser, logout } = useAuth();
   return (
-    <div className="navbar bg-[#5d4133] px-40">
+    <div className="navbar bg-[#5d4133] px-10 flex md:px-20 md:text-[16px] lg:text-[20px] lg:px-40">
       <div className="flex-1">
         <div className="flex items-center gap-3">
           {authUser && (
@@ -26,7 +26,7 @@ export default function Header() {
                   logout
                 </Link>
               ) : (
-                <Link to="/login" className="hover:bg-custom-yellow hover:rounded-md hover:p-2">
+                <Link to="/login" className="hover:bg-custom-yellow hover:rounded-md hover:p-2  ">
                   login
                 </Link>
               )}
@@ -43,7 +43,7 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <div className="flex-none gap-2">
+      <div className="flex-none gap-2 md:gap-4">
         <div className="btn btn-ghost btn-circle">
           <div className="indicator">
             <Link to="/cart">

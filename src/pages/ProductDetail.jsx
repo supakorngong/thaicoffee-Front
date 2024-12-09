@@ -46,20 +46,24 @@ export default function ProductDetail() {
   }, [product, productName]);
 
   return (
-    <div className="flex gap-10 justify-evenly">
+    <div className="flex gap-10 flex-col items-center md:flex-row md:justify-evenly md:pl-10 lg:pl-20 ">
       <div className="mx-15">
-        <img src={currentProduct?.picture}></img>
+        <img className="max-w-[350px] max-h-[400px]" src={currentProduct?.picture}></img>
       </div>
-      <div className="w-[400px] flex flex-col justify-center h-[450px] border-2 border-[#f4f4f5] overflow-hidden shadow-[#ffffff] rounded-lg shadow-sm">
-        <h1 className="text-2xl mb-2 overflow-hidden">{currentProduct?.name}</h1>
-        <h2 className="text-lg mb-1">
-          เเหล่งที่ปลูก : {currentProduct?.province} &nbsp; ภูมิภาค:{currentProduct?.region}
+      <div className="w-[370px] flex flex-col justify-start items-center h-[450px] border-2 border-[#f4f4f5] overflow-hidden shadow-[#ffffff] rounded-lg shadow-sm text-[12px] md:items-start md:justify-center  md:max-w-[700px] lg:max-w-[1000px]  md:text-[18px]">
+        <h1 className="text-[16px] md:text-[22px] lg:text-[26px] mb-2 ">{currentProduct?.name}</h1>
+        {/* 2xl */}
+        <h2 className="text-[14px] md:text-[20px] lg:text-[22px] mb-1 ">
+          เเหล่งที่ปลูก : {currentProduct?.province} <br />
+          ภูมิภาค : {currentProduct?.region}
         </h2>
-        <p className="overflow-hidden whitespace-nowrap text-ellipsis rounded">{currentProduct?.description}</p>
-        <p>ราคา : {currentProduct?.cost} บาท</p>
+        <p className="overflow-scroll wrap rounded max-w-[300px] max-h-[100px] pt-2">คําอธิบาย : {currentProduct?.description}</p>
+        <p className="mt-2">ราคา : {currentProduct?.cost} บาท</p>
         <p>มีจํานวน : {currentProduct?.stock} ชิ้น</p>
         <div>
-          <Button onClick={() => handleClick()}>add to cart</Button>
+          <Button mgy={10} pdx={5} onClick={() => handleClick()}>
+            add to cart
+          </Button>
         </div>
       </div>
       <div>

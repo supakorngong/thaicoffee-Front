@@ -15,7 +15,7 @@ function App() {
           <CartContextProvider>
             <OrderContextProvider>
               <Router />
-              <ToastContainer position="bottom-right" autoClose={3000} />
+              <ToastContainer position="bottom-right" autoClose={700} />
             </OrderContextProvider>
           </CartContextProvider>
         </ProductContextProvider>

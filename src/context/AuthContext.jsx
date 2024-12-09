@@ -11,6 +11,7 @@ export const AuthContext = createContext();
 export default function AuthContextProvider({ children }) {
   const [authUser, setAuthUser] = useState(null);
   const [token, setToken] = useState(getAccessToken());
+  const [isLoading, setIsLoading] = useState(false);
   const fetch = async () => {
     try {
       if (getAccessToken()) {
@@ -39,5 +40,5 @@ export default function AuthContextProvider({ children }) {
     setToken(null);
     toast.success("logout success");
   };
-  return <AuthContext.Provider value={{ authUser, login, logout, token, setAuthUser, fetch }}>{children}</AuthContext.Provider>;
+  return <AuthContext.Provider value={{ authUser, login, logout, token, setAuthUser, fetch, isLoading, setIsLoading }}>{children}</AuthContext.Provider>;
 }

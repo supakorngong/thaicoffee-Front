@@ -54,9 +54,9 @@ export default function RegisterForm() {
 
         <Input type="text" placeholder="enter your lastname" name="lastName" value={input.lastName} onChange={handleChange} error={inputError.lastName} />
 
-        <Input type="text" placeholder="enter your password" name="password" value={input.password} onChange={handleChange} error={inputError.password} />
+        <Input type="password" placeholder="enter your password" name="password" value={input.password} onChange={handleChange} error={inputError.password} />
 
-        <Input type="text" placeholder="enter your confirmPassword" name="confirmPassword" value={input.confirmPassword} onChange={handleChange} error={inputError.confirmPassword} />
+        <Input type="password" placeholder="enter your confirmPassword" name="confirmPassword" value={input.confirmPassword} onChange={handleChange} error={inputError.confirmPassword} />
 
         <Input type="text" placeholder="enter your email" name="email" value={input.email} onChange={handleChange} error={inputError.email} />
 

@@ -1,19 +1,20 @@
 import Swal from "sweetalert2";
 import useAuth from "../hook/useAuth";
 import { useNavigate } from "react-router-dom";
+import Spinner from "../components/Spinner";
 
 export default function HomePage() {
-  const { authUser } = useAuth();
+  const { authUser, isLoading } = useAuth();
   const navigate = useNavigate();
 
   const suggestUser = () => {
     if (!authUser) {
       Swal.fire({
-        title: "do you want to explore our shop without account?",
+        title: "Do You Want To Explore Our Shop Without Account?",
         showDenyButton: true,
         showCancelButton: true,
-        confirmButtonText: "yes",
-        denyButtonText: `no`,
+        confirmButtonText: "Yes I Have",
+        denyButtonText: `No I am not`,
         confirmButtonColor: "#41DC41",
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */
@@ -21,10 +22,10 @@ export default function HomePage() {
           navigate("/product");
         } else if (result.isDenied) {
           Swal.fire({
-            title: "do you have any account?",
+            title: "Do You Have Any Account?",
             showDenyButton: true,
-            confirmButtonText: "yes",
-            denyButtonText: `no`,
+            confirmButtonText: "Yes",
+            denyButtonText: `No`,
           }).then((result) => {
             /* Read more about isConfirmed, isDenied below */
             if (result.isConfirmed) {
@@ -39,13 +40,18 @@ export default function HomePage() {
       navigate("/product");
     }
   };
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <div className="hero min-h-screen" style={{ backgroundImage: "url(https://www.aromathailand.com/wp-content/uploads/2023/10/shutterstock_326070713.jpeg" }}>
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="hero-content text-center text-neutral-content">
         <div className="max-w-md">
           <h1 className="mb-5 text-5xl font-bold">Hello there</h1>
-          <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
+          <p className="mb-5">
+            We prioritize the quality of coffee beans from the best sources to ensure you experience the freshest and most intense flavors. The coffee beans we select are of the highest quality,
+            carefully chosen from renowned coffee farms in Thailand, so every cup of coffee you enjoy is filled with happiness and a unique experience.
+          </p>
 
           <button className="btn btn-primary" onClick={suggestUser}>
             Get Started

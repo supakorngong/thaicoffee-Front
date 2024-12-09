@@ -13,8 +13,8 @@ export default function HomePage() {
         title: "Do You Want To Explore Our Shop Without Account?",
         showDenyButton: true,
         showCancelButton: true,
-        confirmButtonText: "Yes I Have",
-        denyButtonText: `No I am not`,
+        confirmButtonText: "Yes, I Do",
+        denyButtonText: `No, I Do Not`,
         confirmButtonColor: "#41DC41",
       }).then((result) => {
         /* Read more about isConfirmed, isDenied below */

@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import Button from "../components/Button";
 
 import Modal from "../components/Modal";
+import Swal from "sweetalert2";
 
 export default function ProductDetail() {
   const { product } = useProduct();
@@ -30,13 +31,22 @@ export default function ProductDetail() {
       return setNumberItem((prev) => prev - 1);
     }
     setNumberItem((prev) => prev);
-    const decision = confirm("you are removing this product from cart");
-    if (decision) {
-      return setOpen(false);
-    }
+    Swal.fire({
+      title: "Do You Want To Explore Our Shop Without Account?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Yes, I Do",
+      denyButtonText: `No, I Do Not`,
+      confirmButtonColor: "#41DC41",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        return setOpen(false);
+      } else if (result.isDenied) {
+        return;
+      }
+    });
   };
 
-  // console.log(productName);
   useEffect(() => {
     const foundProduct = product.find((product) => product.name === productName);
 

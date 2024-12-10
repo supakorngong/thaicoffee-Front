@@ -8,7 +8,7 @@ export default function OrderHistoryForm() {
     <div className="flex justify-center mt-10">
       <table className="table-auto border-collapse">
         <tr className="bg-[#9e6f57] text-white">
-          <th className="p-2">Order Id</th>
+          <th className="p-2">Order</th>
           <th className="p-2">OrderDate</th>
           <th className="p-2">Total Cost</th>
           <th className="p-2">Status</th>

@@ -67,7 +67,7 @@ export default function ProductDetail() {
           เเหล่งที่ปลูก : {currentProduct?.province} <br />
           ภูมิภาค : {currentProduct?.region}
         </h2>
-        <p className="overflow-scroll wrap rounded max-w-[300px] max-h-[100px] pt-2">คําอธิบาย : {currentProduct?.description}</p>
+        <p className="overflow-scroll wrap  rounded max-w-[300px] max-h-[100px] md:max-h-[250px] pt-2">คําอธิบาย : {currentProduct?.description}</p>
         <p className="mt-2">ราคา : {currentProduct?.cost} บาท</p>
         <p>มีจํานวน : {currentProduct?.stock} ชิ้น</p>
         <div>

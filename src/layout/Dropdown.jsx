@@ -24,16 +24,16 @@ export default function Dropdown() {
           <div className="w-64  bg-white rounded-lg shadow-[0_0_6px_rgb(0,0,0,0.2)] " onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <div>
               <div role="button" onClick={() => productFiltered("North")} className="hover:bg-custom-yellow hover:rounded-md hover:p-2">
-                <Link to="/product">เหนือ</Link>
+                <Link to="/product">ภาคเหนือ</Link>
               </div>
               <div role="button" onClick={() => productFiltered("Mid")} className="hover:bg-custom-yellow hover:rounded-md hover:p-2">
-                <Link to="/product">กลาง</Link>
+                <Link to="/product">ภาคกลาง</Link>
               </div>
               <div role="button" onClick={() => productFiltered("South")} className="hover:bg-custom-yellow hover:rounded-md hover:p-2">
-                <Link to="/product">ใต้</Link>
+                <Link to="/product">ภาคใต้</Link>
               </div>
               <div role="button" onClick={() => productFiltered("NorthEast")} className="hover:bg-custom-yellow hover:rounded-md hover:p-2">
-                <Link to="/product">อีสาน</Link>
+                <Link to="/product">ภาคอีสาน</Link>
               </div>
             </div>
           </div>

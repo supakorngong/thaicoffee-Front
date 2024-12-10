@@ -27,7 +27,7 @@ export default function ProductDetail() {
   };
 
   const handleDecrease = () => {
-    if (numberItem > 0) {
+    if (numberItem > 1) {
       return setNumberItem((prev) => prev - 1);
     }
     setNumberItem((prev) => prev);

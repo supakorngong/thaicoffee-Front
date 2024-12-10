@@ -7,6 +7,9 @@ export default {
       colors: {
         "custom-yellow": "#b98c04", // Replace with your desired hex code
       },
+      screens: {
+        xs: "480px",
+      },
     },
   },
   plugins: [daisyui],

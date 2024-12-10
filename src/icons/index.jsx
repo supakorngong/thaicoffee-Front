@@ -1,6 +1,6 @@
 export function ProfileIcon() {
   return (
-    <svg width="2.5rem" height="2.5rem" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" fill="#000000">
+    <svg width="1.5rem" height="1.5rem" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" fill="#000000">
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
       <g id="SVGRepo_iconCarrier">
@@ -24,7 +24,7 @@ export function ProfileIcon() {
 
 export function CartIcon() {
   return (
-    <svg width="2.5rem" height="2.5rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg width="2rem" height="2rem" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
       <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
       <g id="SVGRepo_iconCarrier">
@@ -45,8 +45,8 @@ export function HistoryIcon() {
   return (
     <svg
       fill="#000000"
-      height="2rem"
-      width="2rem"
+      height="1.5rem"
+      width="1.5rem"
       version="1.1"
       id="Capa_1"
       xmlns="http://www.w3.org/2000/svg"

@@ -1,9 +1,12 @@
 import useCart from "../../../hook/useCart";
 import Button from "../../../components/Button";
 import useAuth from "../../../hook/useAuth";
+import Spinner from "../../../components/Spinner";
+import useProduct from "../../../hook/useProduct";
 
 export default function CartForm() {
   const { cartItem, createCart, setCartItem, deleteCart, setComponent } = useCart();
+  const { isLoading } = useProduct();
   const { authUser } = useAuth();
 
   const handleIncrease = (index) => {
@@ -26,7 +29,9 @@ export default function CartForm() {
     setCartItem(newItem);
   };
 
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <>
       <div className="w-full flex justify-center text-2xl text-black ">
         <h1>cart</h1>

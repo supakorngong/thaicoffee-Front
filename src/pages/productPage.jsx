@@ -1,10 +1,13 @@
 import ProductCard from "../components/ProductCard";
+import Spinner from "../components/Spinner";
 import useProduct from "../hook/useProduct";
 
 export default function ProductPage() {
-  const { product, show } = useProduct();
+  const { product, show, isLoading } = useProduct();
 
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <div className="flex justify-center w-screen">
       <div className="flex w-4/5 p-5 flex-wrap gap-10 w-full justify-center">
         {show?.length > 0

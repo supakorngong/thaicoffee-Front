@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 export default function FinalForm() {
   const fileEl = useRef();
 
-  const { cartItem, setComponent, cost, file, setFile, handleClickPay, isLoading } = useCart();
+  const { cartItem, setComponent, cost, file, setFile, handleClickPay } = useCart();
 
   const { authUser, fetch } = useAuth();
 

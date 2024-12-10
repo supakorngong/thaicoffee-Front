@@ -58,9 +58,12 @@ export default function CartContextProvider({ children }) {
 
   const fetchCart = async () => {
     try {
+      setIsLoading(true);
       const result = await CartApi.getCartData();
       setCartItem(result.data);
+      setIsLoading(false);
     } catch (err) {
+      setIsLoading(false);
       toast.error(err.message);
     }
   };
@@ -94,7 +97,7 @@ export default function CartContextProvider({ children }) {
     }
   };
   return (
-    <CartContext.Provider value={{ createCart, cartItem, fetchCart, setCartItem, deleteCart, component, setComponent, cost, handleClickPay, file, setFile, isLoading, order, setOrder }}>
+    <CartContext.Provider value={{ createCart, cartItem, fetchCart, setCartItem, deleteCart, component, setComponent, cost, handleClickPay, file, setFile, order, setOrder }}>
       {children}
     </CartContext.Provider>
   );

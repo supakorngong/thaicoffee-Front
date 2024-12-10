@@ -20,6 +20,7 @@ export default function ProductContextProvider({ children }) {
       const response = await ProductApi.getAllProduct();
       setProduct(response.data);
     } catch (err) {
+      setIsLoading(false);
       toast.error("fetch product failed");
       console.log("fetch product err", err.message);
     } finally {

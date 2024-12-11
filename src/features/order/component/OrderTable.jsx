@@ -5,7 +5,7 @@ import useOrder from "../../../hook/useOrder";
 import useCart from "../../../hook/useCart";
 import { toast } from "react-toastify";
 
-export default function OrderTable({ el, index }) {
+export default function OrderTable({ el, index, currentPage }) {
   const { fetchOrder } = useOrder();
   const { order } = useCart();
 
@@ -34,7 +34,7 @@ export default function OrderTable({ el, index }) {
   };
   return (
     <tr className="text-[#1a120e]" style={index % 2 === 0 ? { background: "#c5a696" } : { background: "white" }}>
-      <td className="border border-slate-300 p-2">{index + 1}</td>
+      <td className="border border-slate-300 p-2">{currentPage > 1 ? index + 1 + (currentPage - 1) * 10 : index + 1}</td>
       <td className="border border-slate-300 p-2">{formatDate(el.order_date)}</td>
       <td className="border border-slate-300 p-2">{el.total_cost}</td>
       {el?.status === "payed" ? <Button onClick={(e) => handleClick(el.order_id, "received")}>Received</Button> : <td className="border border-slate-300 p-2">{el.status}</td>}

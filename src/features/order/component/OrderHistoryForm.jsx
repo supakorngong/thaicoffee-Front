@@ -28,7 +28,7 @@ export default function OrderHistoryForm() {
         </thead>
         <tbody>
           {currentRows?.map((el, index) => (
-            <OrderTable el={el} index={index} key={el.id} />
+            <OrderTable el={el} index={index} key={el.id} currentPage={currentPage} />
           ))}
         </tbody>
       </table>

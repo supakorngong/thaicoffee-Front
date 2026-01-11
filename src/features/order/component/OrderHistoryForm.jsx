@@ -8,9 +8,9 @@ export default function OrderHistoryForm() {
   const rowsPerPage = 10;
 
   const indexOfLastRow = currentPage * rowsPerPage;
-  console.log(indexOfLastRow, "last");
+
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
-  console.log(indexOfFirstRow, "first");
+
   const currentRows = orderDetail.slice(indexOfFirstRow, indexOfLastRow); // เลือกแค่รายการที่จะแสดงในหน้านี้
 
   const totalPages = Math.ceil(orderDetail.length / rowsPerPage); // คำนวณจำนวนหน้า

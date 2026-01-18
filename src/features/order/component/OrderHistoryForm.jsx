@@ -4,16 +4,21 @@ import OrderTable from "./OrderTable";
 
 export default function OrderHistoryForm() {
   const { orderDetail } = useOrder(); // ดึงข้อมูลคำสั่งซื้อ
+
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 10;
 
   const indexOfLastRow = currentPage * rowsPerPage;
 
   const indexOfFirstRow = indexOfLastRow - rowsPerPage;
+  let currentRows = [];
+  let totalPages = 1;
 
-  const currentRows = orderDetail.slice(indexOfFirstRow, indexOfLastRow); // เลือกแค่รายการที่จะแสดงในหน้านี้
+  if (orderDetail.length > 0) {
+    currentRows = orderDetail.slice(indexOfFirstRow, indexOfLastRow); // เลือกแค่รายการที่จะแสดงในหน้านี้
 
-  const totalPages = Math.ceil(orderDetail.length / rowsPerPage); // คำนวณจำนวนหน้า
+    totalPages = Math.ceil(orderDetail.length / rowsPerPage); // คำนวณจำนวนหน้า
+  }
 
   return (
     <div className="flex flex-col items-center gap-4 justify-center mt-10">

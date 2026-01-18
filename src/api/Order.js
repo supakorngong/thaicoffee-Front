@@ -12,14 +12,15 @@ OrderApi.createOrder = async (data) => {
 OrderApi.getOrderByUserId = async () => {
   try {
     const orderDetail = await axios.get("/order/items");
+
     return orderDetail;
   } catch (err) {
     toast.error(err.message);
   }
 };
-OrderApi.updateStatus = async (orderId, statuss) => {
+OrderApi.updateStatus = async (orderId, status) => {
   try {
-    await axios.patch(`/order/${orderId}`, { status: statuss });
+    await axios.patch(`/order/${orderId}`, { status: status });
   } catch (err) {
     toast.error(err.message);
   }

@@ -13,15 +13,12 @@ export default function AuthContextProvider({ children }) {
   const [token, setToken] = useState(getAccessToken());
   const [isLoading, setIsLoading] = useState(false);
   const fetch = async () => {
-    try {
-      if (getAccessToken()) {
-        const result = await authApi.getMe();
-        setAuthUser(result.data);
-      }
-    } catch (err) {
-      toast.error(err.message);
+    if (getAccessToken()) {
+      const result = await authApi.getMe();
+      setAuthUser(result.data);
     }
   };
+
   useEffect(() => {
     fetch();
   }, [token]);
@@ -40,5 +37,6 @@ export default function AuthContextProvider({ children }) {
     setToken(null);
     toast.success("logout success");
   };
+
   return <AuthContext.Provider value={{ authUser, login, logout, token, setAuthUser, fetch, isLoading, setIsLoading }}>{children}</AuthContext.Provider>;
 }

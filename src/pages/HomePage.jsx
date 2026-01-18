@@ -1,10 +1,9 @@
 import Swal from "sweetalert2";
 import useAuth from "../hook/useAuth";
 import { useNavigate } from "react-router-dom";
-import Spinner from "../components/Spinner";
 
 export default function HomePage() {
-  const { authUser, isLoading } = useAuth();
+  const { authUser } = useAuth();
   const navigate = useNavigate();
 
   const suggestUser = () => {
@@ -40,9 +39,7 @@ export default function HomePage() {
       navigate("/product");
     }
   };
-  return isLoading ? (
-    <Spinner />
-  ) : (
+  return (
     <div
       className="hero min-h-screen"
       style={{

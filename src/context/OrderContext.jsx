@@ -27,11 +27,9 @@ export default function OrderContextProvider({ children }) {
   const fetchOrder = async () => {
     try {
       const orderDetails = await OrderApi.getOrderByUserId();
-      console.log(orderDetail);
       const sortedOrder = orderDetails?.data?.sort((a, b) => b.order_id - a.order_id);
       setOrderDetail(sortedOrder);
     } catch (err) {
-      console.log(err, "err");
       toast.err(err.message);
     }
   };

@@ -9,7 +9,6 @@ const validateLogin = (input) => {
   const { error } = LoginSchema.validate(input, { abortEarly: false });
   if (error) {
     const result = error.details.reduce((acc, el) => {
-      // console.log(el); //ดูtype
       acc[el.path[0]] = el.message;
       return acc;
     }, {});

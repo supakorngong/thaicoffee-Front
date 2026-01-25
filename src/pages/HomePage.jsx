@@ -1,10 +1,9 @@
 import Swal from "sweetalert2";
 import useAuth from "../hook/useAuth";
 import { useNavigate } from "react-router-dom";
-import Spinner from "../components/Spinner";
 
 export default function HomePage() {
-  const { authUser, isLoading } = useAuth();
+  const { authUser } = useAuth();
   const navigate = useNavigate();
 
   const suggestUser = () => {
@@ -40,10 +39,13 @@ export default function HomePage() {
       navigate("/product");
     }
   };
-  return isLoading ? (
-    <Spinner />
-  ) : (
-    <div className="hero min-h-screen" style={{ backgroundImage: "url(https://www.aromathailand.com/wp-content/uploads/2023/10/shutterstock_326070713.jpeg" }}>
+  return (
+    <div
+      className="hero min-h-screen"
+      style={{
+        backgroundImage: "url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSJ5zMK0CrwTYoVsiC-lM-E_zF-8XlpGl3dZae3NINOEWmszPgMbMckk7MDbIPWOTA0ai3ksHa87WQdBEjAizFqYBsDEfYxBWj9d8GpuA&s=10",
+      }}
+    >
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="hero-content text-center text-neutral-content">
         <div className="max-w-md lg:max-w-lg">

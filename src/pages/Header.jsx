@@ -43,19 +43,32 @@ export default function Header() {
           </div>
         </div>
       </div>
-      <div className="flex-none gap-1 md:gap-4">
+      <div
+        className={`flex-none gap-1 md:gap-4
+    ${authUser ? "cursor-pointer" : "cursor-not-allowed opacity-50 pointer-events-none"}
+  `}
+      >
         <div className="btn btn-ghost btn-circle w-[1rem] h-[1rem] md:w-[3rem] md:h-[3rem]">
           <div className="indicator">
-            <Link to="/cart">
+            {authUser ? (
+              <Link to="/cart">
+                <CartIcon />
+              </Link>
+            ) : (
               <CartIcon />
-            </Link>
+            )}
           </div>
         </div>
+
         <div className="btn btn-ghost btn-circle avatar">
           <div>
-            <Link to="/orderhistory">
+            {authUser ? (
+              <Link to="/orderhistory">
+                <HistoryIcon />
+              </Link>
+            ) : (
               <HistoryIcon />
-            </Link>
+            )}
           </div>
         </div>
       </div>

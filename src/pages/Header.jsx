@@ -10,7 +10,7 @@ export default function Header() {
         <div className="flex items-center gap-1 md:gap-3">
           {authUser && (
             <Link to="/profile">
-              <div className="btn btn-ghost btn-circle avatar flex w-[220px] md:w-[300px]">
+              <div className="btn btn-ghost btn-circle avatar flex w-full">
                 <ProfileIcon role="button" />
                 <h1 className="text-white text-[14px] md:text-[18px]">
                   welcome back {authUser?.user.firstName} {authUser.user.lastName} !!!

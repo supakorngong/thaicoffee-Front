@@ -71,7 +71,7 @@ export default function ProductDetail() {
         <p className="mt-2">ราคา : {currentProduct?.cost} บาท</p>
         <p>มีจํานวน : {currentProduct?.stock} ชิ้น</p>
         <div>
-          <Button mgy={10} pdx={5} onClick={() => handleClick()}>
+          <Button mgy={10} pdx={5} onClick={() => handleClick()} disabled={currentProduct?.stock <= 0 ? true : false}>
             add to cart
           </Button>
         </div>

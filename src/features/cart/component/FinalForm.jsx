@@ -31,6 +31,7 @@ export default function FinalForm() {
 
       handleEditAddress();
     } catch (err) {
+      console.error(err);
       toast.err(err.message);
     }
   };

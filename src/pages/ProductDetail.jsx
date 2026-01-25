@@ -32,7 +32,7 @@ export default function ProductDetail() {
     }
     setNumberItem((prev) => prev);
     Swal.fire({
-      title: "Do You Want To Explore Our Shop Without Account?",
+      title: "Do You Want To Remove This Product?",
       showDenyButton: true,
       showCancelButton: true,
       confirmButtonText: "Yes, I Do",

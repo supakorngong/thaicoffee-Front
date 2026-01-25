@@ -31,7 +31,7 @@ export default function Modal(props) {
                       <div className=" max-w-60 h-60 object-cover">
                         <img src={currentProduct?.picture} alt="product" className="w-full h-full" />
                       </div>
-                      <div className="p-4">
+                      <div className="px-[10px] py-[10px] flex justify-end items-end flex-row gap-2">
                         <button onClick={handleAdd}>+</button>
                         {numberItem}ชิ้น
                         <button onClick={handleDecrease}>-</button>

@@ -49,9 +49,9 @@ export default function LoginForm() {
   ) : (
     <form onSubmit={handleSubmitForm} className="flex justify-center w-full ">
       <div className="w-full flex-col items-center justify-center p-10">
-        <Input type="text" placeholder="enter your email" name="email" value={input.email} onChange={handleChange} error={inputError.email} />
+        <Input type="text" placeholder="enter your email" name="email" value={input.email} onChange={handleChange} error={inputError.email} label="Email" />
 
-        <Input type="password" placeholder="enter your password" name="password" value={input.password} onChange={handleChange} error={inputError.password} />
+        <Input type="password" placeholder="enter your password" name="password" value={input.password} onChange={handleChange} error={inputError.password} label="Password" />
 
         <Button display="block mx-auto mt-4" width="20">
           login

@@ -50,17 +50,25 @@ export default function RegisterForm() {
   return (
     <form onSubmit={handleSubmitForm} className="flex justify-center w-full ">
       <div className="w-full flex-col items-center justify-center p-10">
-        <Input type="text" placeholder="enter your firstname" name="firstName" value={input.firstName} onChange={handleChange} error={inputError.firstName} />
+        <Input type="text" placeholder="Enter your first name" name="firstName" value={input.firstName} onChange={handleChange} error={inputError.firstName} label="First Name" />
 
-        <Input type="text" placeholder="enter your lastname" name="lastName" value={input.lastName} onChange={handleChange} error={inputError.lastName} />
+        <Input type="text" placeholder="Enter your last name" name="lastName" value={input.lastName} onChange={handleChange} error={inputError.lastName} label="Last Name" />
 
-        <Input type="password" placeholder="enter your password" name="password" value={input.password} onChange={handleChange} error={inputError.password} />
+        <Input type="password" placeholder="Enter your password" name="password" value={input.password} onChange={handleChange} error={inputError.password} label="Password" />
 
-        <Input type="password" placeholder="enter your confirmPassword" name="confirmPassword" value={input.confirmPassword} onChange={handleChange} error={inputError.confirmPassword} />
+        <Input
+          type="password"
+          placeholder="Enter your confirm password"
+          name="confirmPassword"
+          value={input.confirmPassword}
+          onChange={handleChange}
+          error={inputError.confirmPassword}
+          label="Confirm Password"
+        />
 
-        <Input type="text" placeholder="enter your email" name="email" value={input.email} onChange={handleChange} error={inputError.email} />
+        <Input type="text" placeholder="Enter your email" name="email" value={input.email} onChange={handleChange} error={inputError.email} label="Email" />
 
-        <Input type="text" placeholder="enter your address" name="address" value={input.address} onChange={handleChange} error={inputError.address} />
+        <Input type="text" placeholder="Enter your address" name="address" value={input.address} onChange={handleChange} error={inputError.address} label="Address" />
 
         <Button display="block mx-auto" width="20">
           register
